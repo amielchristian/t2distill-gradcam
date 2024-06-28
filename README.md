@@ -6,7 +6,9 @@ project
 │   │   train_labels.csv
 │   │   test_labels.csv
 │   └───train
+│       │   ...
 │   └───test
+│       │   ...
 │
 └───code <-- this is the repository
 ~~~
