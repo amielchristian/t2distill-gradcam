@@ -9,5 +9,12 @@ According to the paper:
 """
 import tensorflow as tf
 from load_data import load_data
+from keras_vit import vit
 
 train_ds, val_ds = load_data()
+model = vit.ViT_B32(
+    weights='imagenet21k',
+    image_size = 256,
+    num_classes=5
+    )
+model.summary()
