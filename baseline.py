@@ -1,4 +1,10 @@
 """
+Requirements:
+    - TensorFlow 2.15.0 (anything below 2.16.0 should work I think)
+    - TensorFlow Addons 0.23.0 (I think anything goes with this one)
+    - Vit-Keras
+
+
 This is the baseline ViT model, known as 384_B_32 in the paper.
 According to the paper:
     - The model contains 12 layers, 768 hidden units, and 12 heads.
@@ -9,12 +15,20 @@ According to the paper:
 """
 import tensorflow as tf
 from load_data import load_data
-from keras_vit import vit
+from vit_keras import vit
 
 train_ds, val_ds = load_data()
-model = vit.ViT_B32(
+model = vit.vit_b32(
     weights='imagenet21k',
     image_size = 256,
-    num_classes=5
+    pretrained=True,
+    pretrained_top=False,
+    classes=5
     )
 model.summary()
+model.compile(
+    optimizer=tf.keras.optimizers.Adam(learning_rate=2e-4),
+    loss=tf.keras.losses.CategoricalCrossentropy(),
+    metrics=['accuracy']
+    )
+model.save('baseline.keras')
