@@ -20,7 +20,7 @@ from vit_keras import vit
 train_ds, val_ds = load_data()
 model = vit.vit_b32(
     weights='imagenet21k',
-    image_size = 256,
+    image_size = 224,
     pretrained=True,
     pretrained_top=False,
     classes=5
@@ -29,6 +29,8 @@ model.summary()
 model.compile(
     optimizer=tf.keras.optimizers.Adam(learning_rate=2e-4),
     loss=tf.keras.losses.CategoricalCrossentropy(),
+    loss_weights=[1.0, 1.0, 1.0, 2.0, 2.0],
     metrics=['accuracy']
     )
+model.fit(train_ds, validation_data=val_ds, epochs=5, shuffle=False)
 model.save('baseline.keras')

@@ -1,8 +1,8 @@
 import tensorflow as tf
 import pandas as pd
 
-image_size = (256, 256)
-batch_size = 32
+image_size = (384, 384)
+batch_size = 8
 
 def load_data():
     train_dir = '../data/train'
