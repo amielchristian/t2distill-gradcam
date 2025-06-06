@@ -1,1 +1,6 @@
 *.keras
+.*
+__*__*
+.venv
+data/train/*
+data/test/*
