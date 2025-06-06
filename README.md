@@ -9,4 +9,3 @@ Note that this repository does not contain the EyePACS fundus image dataset, whi
 #### Setup
 1. Install required packages with `pip install -r requirements.txt`.
 2. Obtain images and place in the `data` folder under `train` and `test`. The `.csv` files containing the labels are preprovided.
-3. 
